@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Світ Мандрів - Туристично-інформаційний центр</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Загальні стилі */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --yellow: #FFD166;
+            --green: #06D6A0;
+            --blue: #118AB2;
+            --turquoise: #00B4D8;
+            --dark: #073B4C;
+            --light: #F8F9FA;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--yellow), var(--green), var(--blue));
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(to right, var(--blue), var(--turquoise));
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 180, 216, 0.4);
+        }
+
+        .btn-yellow {
+            background: linear-gradient(to right, var(--yellow), #FFB347);
+        }
+
+        .btn-green {
+            background: linear-gradient(to right, var(--green), #06C290);
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: conic-gradient(var(--yellow) 0% 33%, var(--green) 33% 66%, var(--blue) 66% 100%);
+            border-radius: 50%;
+            margin-right: 15px;
+            position: relative;
+        }
+
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 25px;
+            height: 25px;
+            background-color: white;
+            border-radius: 50%;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .logo-text span {
+            color: var(--blue);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--blue);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--blue);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(7, 59, 76, 0.7), rgba(7, 59, 76, 0.7)), 
+                        url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        /* About Section */
+        .about {
+            background-color: white;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .mission {
+            background-color: var(--light);
+            padding: 40px;
+            border-radius: 10px;
+            margin-top: 30px;
+            border-left: 5px solid var(--blue);
+        }
+
+        .team {
+            margin-top: 50px;
+        }
+
+        .team-members {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .team-member {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            background-color: white;
+            padding: 30px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+
+        .member-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--blue);
+            overflow: hidden;
+        }
+
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Services Section */
+        .services {
+            background-color: var(--light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .service-icon.hotels {
+            background: linear-gradient(to right, var(--yellow), #FFB347);
+        }
+
+        .service-icon.transport {
+            background: linear-gradient(to right, var(--green), #06C290);
+        }
+
+        .service-icon.food {
+            background: linear-gradient(to right, var(--blue), var(--turquoise));
+        }
+
+        .service-icon.leisure {
+            background: linear-gradient(to right, #EF476F, #FF6B6B);
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .countries {
+            margin-top: 80px;
+        }
+
+        .countries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .country-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .country-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .country-egypt {
+            background-image: url('https://images.unsplash.com/photo-1539650116574-75c0c6d73f7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+        }
+
+        .country-brazil {
+            background-image: url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+        }
+
+        .country-france {
+            background-image: url('https://images.unsplash.com/photo-1502602898536-47ad22581b52?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+        }
+
+        .country-content {
+            padding: 25px;
+        }
+
+        .country-content h3 {
+            display: flex;
+            align-items: center;
+        }
+
+        .country-content h3 i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .egypt-icon {
+            color: var(--yellow);
+        }
+
+        .brazil-icon {
+            color: var(--green);
+        }
+
+        .france-icon {
+            color: var(--blue);
+        }
+
+        .gallery {
+            margin-top: 80px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Contacts Section */
+        .contacts {
+            background-color: white;
+        }
+
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-card {
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--blue);
+            margin-right: 15px;
+            width: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--blue);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+            background-color: var(--turquoise);
+        }
+
+        .contact-form {
+            flex: 1;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--blue);
+            outline: none;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            background-color: var(--light);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .review-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(0, 180, 216, 0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .review-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #eee;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--blue);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        /* Адаптивність */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            section {
+                padding: 60px 0;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .team-members {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon"></div>
+                <div class="logo-text">Світ <span>Мандрів</span></div>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="#home">Головна</a></li>
+                    <li><a href="#about">Про нас</a></li>
+                    <li><a href="#services">Послуги</a></li>
+                    <li><a href="#contacts">Контакти</a></li>
+                    <li><a href="#reviews">Відгуки</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Світ Мандрів</h1>
+            <p>Відкривай світ разом із нами!</p>
+            <a href="#services" class="btn">Дізнатися більше</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Про нас</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Туристично-інформаційний центр "Світ Мандрів" - це ваш провідник у світ незабутніх подорожей. Ми спеціалізуємося на організації подорожей до найцікавіших країн світу: Єгипту, Бразилії та Франції.</p>
+                    <p>Наша мета - зробити вашу подорож максимально комфортною та незабутньою, подбавши про всі деталі: від вибору готелю до організації екскурсій.</p>
+                    <div class="mission">
+                        <h3>Наша місія</h3>
+                        <p>Допомагати мандрівникам відкривати світ без турбот, надаючи якісні туристичні послуги та актуальну інформацію.</p>
+                        <p>Ми допоможемо вам знайти найкращі маршрути, готелі, екскурсії та пропозиції для подорожей до найцікавіших країн світу. Наші консультанти мають багаторічний досвід, а інформація завжди актуальна та перевірена.</p>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Подорожі">
+                </div>
+            </div>
+            <div class="team">
+                <h3>Наша команда</h3>
+                <div class="team-members">
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b786d4d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Олена Петренко">
+                        </div>
+                        <h4>Олена Петренко</h4>
+                        <p>Експерт з подорожей до Єгипту</p>
+                        <p>Досвід: 8 років</p>
+                        <p>Олена спеціалізується на організації подорожей до Єгипту, знає всі найкращі курорти та екскурсійні маршрути. Вона особисто відвідала Єгипт 15 разів!</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Марко Коваленко">
+                        </div>
+                        <h4>Марко Коваленко</h4>
+                        <p>Експерт з подорожей до Бразилії</p>
+                        <p>Досвід: 6 років</p>
+                        <p>Марко провів у Бразилії понад 2 роки, добре знає португальську мову та місцеві звичаї. Він організує найкращі тури на карнавал у Ріо.</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Анна Сидоренко">
+                        </div>
+                        <h4>Анна Сидоренко</h4>
+                        <p>Експерт з подорожей до Франції</p>
+                        <p>Досвід: 10 років</p>
+                        <p>Анна живе у Франції впродовж 5 років, володіє французькою мовою та знає всі секретні куточки Парижа. Вона організує романтичні подорожі для пар.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Наші послуги</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon hotels">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Розміщення</h3>
+                        <p>Підбір найкращих готелів, хостелів та апартаментів за вашими уподобаннями та бюджетом.</p>
+                        <ul>
+                            <li>Готелі 3-5 зірок з усіма зручностями</li>
+                            <li>Бутик-готелі з унікальним дизайном</li>
+                            <li>Апартаменти та вілли для сімейного відпочинку</li>
+                            <li>Хостели для бюджетних подорожей</li>
+                            <li>Курортні комплекси з SPA та розвагами</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon transport">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Транспорт</h3>
+                        <p>Організація трансферів, бронювання авіаквитків, оренда автомобілів.</p>
+                        <ul>
+                            <li>Авіаквитки найкращих авіакомпаній</li>
+                            <li>Трансфери з/до аеропорту</li>
+                            <li>Оренда автомобілів різних класів</li>
+                            <li>Внутрішні перельоти</li>
+                            <li>Залізничні квитки</li>
+                            <li>Оренда яхт та човнів</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon food">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Харчування</h3>
+                        <p>Рекомендації найкращих ресторанів, кафе та місцевих закладів харчування.</p>
+                        <ul>
+                            <li>Ресторани з місцевою кухнею</li>
+                            <li>Гастрономічні тури</li>
+                            <li>Бронювання столиків</li>
+                            <li>Кулінарні майстер-класи</li>
+                            <li>Дегустації вин та сирів</li>
+                            <li>Організація пікніків</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon leisure">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Дозвілля</h3>
+                        <p>Організація екскурсій, відвідування музеїв, пляжний відпочинок та активні розваги.</p>
+                        <ul>
+                            <li>Екскурсії з професійними гідами</li>
+                            <li>Вхідні квитки до музеїв та пам'яток</li>
+                            <li>Пляжні курорти з обладнанням</li>
+                            <li>Активний відпочинок (дайвінг, серфінг, хайкінг)</li>
+                            <li>Шопінг-тури</li>
+                            <li>Нічні розваги та клуби</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="countries">
+                <h2>Країни для подорожей</h2>
+                <div class="countries-grid">
+                    <div class="country-card">
+                        <div class="country-image country-egypt"></div>
+                        <div class="country-content">
+                            <h3><i class="fas fa-sun egypt-icon"></i> Єгипет</h3>
+                            <p>Країна стародавніх пірамід, таємничих фараонів та кришталево чистих вод Червоного моря.</p>
+                            <p><strong>Клімат:</strong> спекотний пустельний, з прохолодними вечорами</p>
+                            <p><strong>Найкращий час для відвідування:</strong> жовтень-квітень</p>
+                            <p><strong>Цікавий факт:</strong> Єгипетські піраміди в Гізі - єдине з семи чудес світу, що збереглося до наших днів.</p>
+                            <p><strong>Популярні курорти:</strong> Хургада, Шарм-ель-Шейх, Марса-Алам, Дахаб</p>
+                            <p><strong>Вартість туру:</strong> від 400$ за тиждень</p>
+                            <a href="#" class="btn btn-yellow">Детальніше</a>
+                        </div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-image country-brazil"></div>
+                        <div class="country-content">
+                            <h3><i class="fas fa-tree brazil-icon"></i> Бразилія</h3>
+                            <p>Країна карнавалів, самби, непрохідних джунглів Амазонки та чарівних пляжів.</p>
+                            <p><strong>Клімат:</strong> тропічний, з високою вологістю</p>
+                            <p><strong>Найкращий час для відвідування:</strong> грудень-березень (карнавал)</p>
+                            <p><strong>Цікавий факт:</strong> Бразилія - найбільша країна Південної Америки та п'ята за величиною у світі.</p>
+                            <p><strong>Популярні курорти:</strong> Ріо-де-Жанейро, Сальвадор, Форталеза, Ресіфі</p>
+                            <p><strong>Вартість туру:</strong> від 800$ за тиждень</p>
+                            <a href="#" class="btn btn-green">Детальніше</a>
+                        </div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-image country-france"></div>
+                        <div class="country-content">
+                            <h3><i class="fas fa-landmark france-icon"></i> Франція (Париж)</h3>
+                            <p>Столиця моди, мистецтва та романтики з неймовірною архітектурою та культурою.</p>
+                            <p><strong>Клімат:</strong> помірний морський, з м'якою зимою та теплим літом</p>
+                            <p><strong>Найкращий час для відвідування:</strong> квітень-червень, вересень-жовтень</p>
+                            <p><strong>Цікавий факт:</strong> Ейфелева вежа мала бути тимчасовою спорудою і планувалася до демонтажу через 20 років після побудови.</p>
+                            <p><strong>Популярні місця:</strong> Ейфелева вежа, Лувр, Монмартр, Версаль</p>
+                            <p><strong>Вартість туру:</strong> від 600$ за тиждень</p>
+                            <a href="#" class="btn">Детальніше</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery">
+                <h2>Галерея подорожей</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1572250616419-98c8e27e8b13?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Піраміди Єгипту">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1548013146-72479768bada?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Храм у Єгипті">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1544984243-ec57ea16fe25?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Карнавал у Бразилії">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1599576838686-339a5b68c4d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Водоспад Ігуасу">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Париж вночі">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1431274172761-fca41d930114?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Лувр">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1596040033221-a1b4e11d8e66?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Червоне море">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1587330979470-3595ac045ab0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Пляж Копакабана">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacts Section -->
+    <section id="contacts" class="contacts">
+        <div class="container">
+            <h2>Контакти</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <h3>Наша адреса</h3>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>Київ, вул. Подорожей, 10</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <p>+380 97 370 13 49</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <p>info@svitmandriv.com</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <p>Пн-Пт: 9:00-20:00<br>Сб-Нд: 10:00-18:00</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <h3>Соціальні мережі</h3>
+                        <p>Слідкуйте за нами в соціальних мережах, щоб бути в курсі всіх акцій та новинок</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-telegram"></i></a>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <h3>Додаткові послуги</h3>
+                        <ul>
+                            <li>Туристичні страховки</li>
+                            <li>Візова підтримка</li>
+                            <li>Консьєрж-сервіс</li>
+                            <li>Оренда туристичного обладнання</li>
+                            <li>Ексклюзивні тури</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Напишіть нам</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Ваше ім'я</label>
+                            <input type="text" id="name" placeholder="Введіть ваше ім'я">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Ваш email</label>
+                            <input type="email" id="email" placeholder="Введіть ваш email">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Тема повідомлення</label>
+                            <input type="text" id="subject" placeholder="Введіть тему повідомлення">
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Країна подорожі</label>
+                            <select id="country">
+                                <option value="">Оберіть країну</option>
+                                <option value="egypt">Єгипет</option>
+                                <option value="brazil">Бразилія</option>
+                                <option value="france">Франція</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Ваше повідомлення</label>
+                            <textarea id="message" placeholder="Введіть ваше повідомлення"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Надіслати повідомлення</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews">
+        <div class="container">
+            <h2>Відгуки наших клієнтів</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-text">
+                        Подорож до Єгипту, організована "Світом Мандрів", перевершила всі мої очікування! Готель був просто чудовий, екскурсії цікаві, а обслуговування на найвищому рівні. Особливо вразила екскурсія до пірамід Гізи та круїз по Нілу. Обов'язково скористаюся послугами центру ще раз!
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b786d4d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Ірина Мельник">
+                        </div>
+                        <div class="author-info">
+                            <h4>Ірина Мельник</h4>
+                            <p>Подорож до Єгипту, травень 2023</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-text">
+                        Дякуємо "Світу Мандрів" за чудово організовану подорож до Парижа! Все було ідеально: від трансферу до готелю до екскурсій. Особливо вразив професіоналізм гідів та їхнє знання місцевих пам'яток. Романтична вечеря біля Ейфелевої вежі була незабутньою! Рекомендую всім!
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Олександр та Наталія Коваль">
+                        </div>
+                        <div class="author-info">
+                            <h4>Олександр та Наталія Коваль</h4>
+                            <p>Подорож до Парижа, липень 2023</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-text">
+                        Неймовірна подорож до Бразилії! Карнавал у Ріо - це щось неймовірне! Дякуємо "Світу Мандрів" за те, що зробили нашу мрію реальністю. Все було організовано на вищому рівні, без жодних проблем. Особливо сподобалася екскурсія до водоспаду Ігуасу. Обов'язково повернемося!
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Максим Шевченко">
+                        </div>
+                        <div class="author-info">
+                            <h4>Максим Шевченко</h4>
+                            <p>Подорож до Бразилії, лютий 2023</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-text">
+                        Відпочинок у Шарм-ель-Шейху був просто фантастичним! Дякую "Світу Мандрів" за професійний підбір готелю та екскурсій. Дайвінг у Червоному морі залишив незабутні враження. Обов'язково планую наступну подорож через ваш центр!
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Софія Іваненко">
+                        </div>
+                        <div class="author-info">
+                            <h4>Софія Іваненко</h4>
+                            <p>Подорож до Єгипту, вересень 2023</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-text">
+                        Подорож до Парижа з "Світом Мандрів" була найкращим подарунком на нашій весілля! Все було організовано ідеально: від готелю з видом на Ейфелеву вежу до екскурсії по Монмартру. Дякуємо за незабутні враження!
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">
+                            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Вікторія та Андрій">
+                        </div>
+                        <div class="author-info">
+                            <h4>Вікторія та Андрій</h4>
+                            <p>Подорож до Парижа, червень 2023</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-text">
+                        Подорож до Бразилії була мрією всього життя, і "Світ Мандрів" зробив її реальністю! Від карнавалу в Ріо до джунглів Амазонки - кожен день був наповнений неймовірними враженнями. Дякую за професійний підхід та турбулентний відпочинок!
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Дмитро Лисенко">
+                        </div>
+                        <div class="author-info">
+                            <h4>Дмитро Лисенко</h4>
+                            <p>Подорож до Бразилії, квітень 2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <div class="logo-icon"></div>
+                        <div class="logo-text">Світ <span>Мандрів</span></div>
+                    </div>
+                    <p>Відкривай світ разом із нами! Наш туристично-інформаційний центр допоможе вам знайти найкращі маршрути, готелі, екскурсії та пропозиції для подорожей до найцікавіших країн світу.</p>
+                    <p>Наші консультанти мають багаторічний досвід, а інформація завжди актуальна та перевірена.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Наші послуги</h3>
+                    <ul>
+                        <li><a href="#">Розміщення</a></li>
+                        <li><a href="#">Транспорт</a></li>
+                        <li><a href="#">Харчування</a></li>
+                        <li><a href="#">Дозвілля</a></li>
+                        <li><a href="#">Страхові послуги</a></li>
+                        <li><a href="#">Візова підтримка</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Країни</h3>
+                    <ul>
+                        <li><a href="#">Єгипет</a></li>
+                        <li><a href="#">Бразилія</a></li>
+                        <li><a href="#">Франція (Париж)</a></li>
+                    </ul>
+                    <h3>Корисні посилання</h3>
+                    <ul>
+                        <li><a href="#">Блог про подорожі</a></li>
+                        <li><a href="#">Корисні поради</a></li>
+                        <li><a href="#">Акції та знижки</a></li>
+                        <li><a href="#">Візові вимоги</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакти</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Київ, вул. Подорожей, 10</li>
+                        <li><i class="fas fa-phone"></i> +380 97 370 13 49</li>
+                        <li><i class="fas fa-envelope"></i> info@svitmandriv.com</li>
+                        <li><i class="fas fa-clock"></i> Пн-Пт: 9:00-20:00</li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Світ Мандрів. Всі права захищені.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Мобільне меню
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('show');
+        });
+
+        // Плавна прокрутка для навігаційних посилань
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Закриваємо мобільне меню після кліку
+                document.querySelector('nav ul').classList.remove('show');
+            });
+        });
+
+        // Анімація при скролі
+        window.addEventListener('scroll', function() {
+            const elements = document.querySelectorAll('.service-card, .team-member, .review-card, .gallery-item');
+            
+            elements.forEach(element => {
+                const position = element.getBoundingClientRect();
+                
+                // Якщо елемент у видимій області
+                if(position.top < window.innerHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Ініціалізація анімації
+        window.addEventListener('load', function() {
+            const elements = document.querySelectorAll('.service-card, .team-member, .review-card, .gallery-item');
+            
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            // Запускаємо анімацію після завантаження
+            setTimeout(() => {
+                window.dispatchEvent(new Event('scroll'));
+            }, 100);
+        });
+    </script>
+</body>
+</html>
